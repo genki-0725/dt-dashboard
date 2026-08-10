@@ -14,14 +14,21 @@
   「ホーム画面に追加」するとアイコンから起動でき、オフラインでも直近のデータを閲覧できる。
 - GitHub Pagesで公開する想定（このフォルダ単体を1つのGitリポジトリとして扱う）。
 
-## データの更新〜再公開の流れ
+## データの更新〜再公開の流れ（自動化済み・2026-08-10〜）
 
-1. いつも通り `scripts/run_daily_record.ps1` 等でデータを更新する。
-2. `python src/generate_webapp_data.py` を実行して `webapp/data.json` を最新化する。
-3. `webapp/` フォルダ内で `git add -A && git commit -m "update data" && git push` する。
-4. 数十秒〜数分でGitHub Pages上のサイトに反映される。
+`scripts/run_daily_record.ps1`（平日15:35自動実行）の最終ステップとして
+`scripts/publish_webapp.ps1` が呼ばれ、以下を自動で行う。
 
-（今のところ2〜3は手動。慣れてきたら自動化＝スケジュール実行やGit操作の自動化を検討してもよい。）
+1. `python src/generate_webapp_data.py` で `webapp/data.json` を最新化
+2. 変更があれば `git add -A && git commit && git push`
+3. 数十秒〜数分でGitHub Pages上のサイトに反映される（変更がなければpushはスキップ）
+
+手動で今すぐ更新したい場合は `scripts/publish_webapp.ps1` を単独実行すればよい
+（`powershell.exe -File scripts\publish_webapp.ps1`）。
+
+認証はGitHub CLI（`gh auth login`済み）をgitのcredential helperとして使っており、
+Windows資格情報マネージャーに保存されているため、タスクスケジューラ実行時も
+追加のログイン操作は不要。
 
 ## アクセス保護について（重要・限界の説明）
 
