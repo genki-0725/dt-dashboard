@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>デイトレ ダッシュボード</title>
+<meta name="description" content="監視銘柄・資金推移・バックテスト結果の個人用ダッシュボード" />
+<meta name="theme-color" content="#8A6D3B" />
+<link rel="manifest" href="manifest.json" />
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="デイトレ" />
+<meta name="robots" content="noindex, nofollow" />
+<style>
+:root {
+  --bg: #F5F6F3;
+  --surface: #FFFFFF;
+  --surface-2: #EFF1EC;
+  --ink: #1B1D1C;
+  --ink-muted: #5C625F;
+  --border: #DEE1DC;
+  --accent: #8A6D3B;
+  --accent-ink: #FFFFFF;
+  --attention: #7A4A78;
+  --attention-bg: #F3E9F2;
+  --gain: #B23A2E;
+  --loss: #2B5A7A;
+  --neutral-pnl: #7A7E79;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --font-ui: -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Segoe UI", "Noto Sans JP", sans-serif;
+  --font-num: ui-monospace, "SF Mono", "Cascadia Mono", "Consolas", monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #16181A;
+    --surface: #1E2123;
+    --surface-2: #26292B;
+    --ink: #E8EAE6;
+    --ink-muted: #9CA39D;
+    --border: #33383A;
+    --accent: #CBA968;
+    --accent-ink: #16181A;
+    --attention: #D9AAD6;
+    --attention-bg: #332A34;
+    --gain: #E2685A;
+    --loss: #74A9CE;
+    --neutral-pnl: #8B908A;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #16181A;
+  --surface: #1E2123;
+  --surface-2: #26292B;
+  --ink: #E8EAE6;
+  --ink-muted: #9CA39D;
+  --border: #33383A;
+  --accent: #CBA968;
+  --accent-ink: #16181A;
+  --attention: #D9AAD6;
+  --attention-bg: #332A34;
+  --gain: #E2685A;
+  --loss: #74A9CE;
+  --neutral-pnl: #8B908A;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.num { font-family: var(--font-num); font-variant-numeric: tabular-nums; }
+
+a { color: inherit; }
+
+/* ---------- ロック画面 ---------- */
+#lock {
+  position: fixed; inset: 0; z-index: 100;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+#lock.hidden { display: none; }
+.lock-card {
+  width: 100%; max-width: 320px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  text-align: center;
+}
+.lock-card h1 { font-size: 17px; margin: 0 0 4px; }
+.lock-card p { color: var(--ink-muted); font-size: 13px; margin: 0 0 18px; }
+.lock-card input {
+  width: 100%; padding: 11px 12px; font-size: 16px;
+  border: 1px solid var(--border); border-radius: var(--radius-sm);
+  background: var(--surface-2); color: var(--ink);
+  margin-bottom: 10px;
+}
+.lock-card button {
+  width: 100%; padding: 11px 12px; font-size: 15px; font-weight: 600;
+  border: none; border-radius: var(--radius-sm);
+  background: var(--accent); color: var(--accent-ink);
+}
+.lock-error { color: var(--gain); font-size: 12px; min-height: 16px; margin-top: 8px; }
+
+/* ---------- 本体 ---------- */
+#app.hidden { display: none; }
+.wrap { max-width: 900px; margin: 0 auto; padding: 16px 16px 48px; }
+
+header.top {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 14px 4px 18px;
+  gap: 8px; flex-wrap: wrap;
+}
+header.top h1 { font-size: 17px; margin: 0; letter-spacing: 0.01em; }
+header.top .meta { font-size: 11px; color: var(--ink-muted); }
+.theme-toggle {
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--ink-muted); border-radius: 999px; padding: 5px 12px; font-size: 12px;
+}
+
+.eyebrow {
+  text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px;
+  color: var(--ink-muted); font-weight: 600; margin: 0 0 8px;
+}
+
+section { margin-bottom: 28px; }
+
+/* stat cards */
+.stat-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+}
+@media (min-width: 640px) { .stat-grid { grid-template-columns: repeat(4, 1fr); } }
+.stat-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 14px 14px 12px;
+}
+.stat-card .label { font-size: 11.5px; color: var(--ink-muted); margin-bottom: 6px; }
+.stat-card .value { font-size: 19px; font-weight: 700; }
+.stat-card .sub { font-size: 11px; color: var(--ink-muted); margin-top: 3px; }
+.gain-text { color: var(--gain); }
+.loss-text { color: var(--loss); }
+.neutral-text { color: var(--neutral-pnl); }
+
+/* banner */
+.banner {
+  background: var(--attention-bg); border: 1px solid var(--attention);
+  border-radius: var(--radius); padding: 14px 16px;
+}
+.banner h2 { font-size: 13.5px; margin: 0 0 8px; color: var(--attention); }
+.banner ul { margin: 0; padding-left: 18px; font-size: 13px; }
+.banner li { margin-bottom: 6px; }
+.banner li .rsym { font-weight: 700; }
+
+/* table */
+.table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius); -webkit-overflow-scrolling: touch; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; min-width: 560px; }
+thead th {
+  position: sticky; top: 0; background: var(--surface-2);
+  text-align: right; font-weight: 600; color: var(--ink-muted);
+  padding: 9px 10px; border-bottom: 1px solid var(--border); white-space: nowrap;
+}
+thead th:first-child, td:first-child {
+  text-align: left; position: sticky; left: 0; background: var(--surface-2);
+  z-index: 1;
+}
+tbody td:first-child { background: var(--surface); }
+td { padding: 9px 10px; border-bottom: 1px solid var(--border); text-align: right; white-space: nowrap; }
+tbody tr:last-child td { border-bottom: none; }
+.sym-cell .code { font-family: var(--font-num); font-size: 12px; color: var(--ink-muted); }
+.sym-cell .name { font-size: 13px; }
+
+.pill {
+  display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600;
+}
+.pill.active { background: color-mix(in srgb, var(--accent) 18%, transparent); color: var(--accent); }
+.pill.simulation { background: var(--surface-2); color: var(--ink-muted); border: 1px solid var(--border); }
+
+.foot-note {
+  font-size: 12px; color: var(--ink-muted); border-top: 1px solid var(--border);
+  padding-top: 16px; margin-top: 8px;
+}
+.foot-note ul { padding-left: 18px; margin: 8px 0 0; }
+.foot-note li { margin-bottom: 6px; }
+
+.card-hero {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 18px 18px 16px; margin-bottom: 12px;
+  display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 10px;
+}
+.card-hero .big { font-size: 28px; font-weight: 700; }
+.card-hero .cap-note { font-size: 11px; color: var(--ink-muted); }
+</style>
+</head>
+<body>
+
+<div id="lock">
+  <div class="lock-card">
+    <h1>デイトレ ダッシュボード</h1>
+    <p>合言葉を入力してください</p>
+    <input id="lock-input" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" />
+    <button id="lock-submit">開く</button>
+    <div class="lock-error" id="lock-error"></div>
+  </div>
+</div>
+
+<div id="app" class="hidden">
+  <div class="wrap">
+    <header class="top">
+      <h1>📈 デイトレ ダッシュボード</h1>
+      <button class="theme-toggle" id="theme-toggle">🌓 表示切替</button>
+    </header>
+
+    <div class="card-hero" id="capital-hero"></div>
+
+    <section>
+      <div class="stat-grid" id="stat-grid"></div>
+    </section>
+
+    <section id="review-needed-section" style="display:none;">
+      <div class="banner">
+        <h2>⚠ 要相談（自動削除せず保留中の銘柄）</h2>
+        <ul id="review-needed-list"></ul>
+      </div>
+    </section>
+
+    <section>
+      <p class="eyebrow">ウォッチリスト（累積損益順）</p>
+      <div class="table-scroll">
+        <table id="watchlist-table">
+          <thead>
+            <tr>
+              <th>銘柄</th>
+              <th>状態</th>
+              <th>取引数</th>
+              <th>勝率</th>
+              <th>累積損益</th>
+            </tr>
+          </thead>
+          <tbody id="watchlist-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <p class="eyebrow">振り返り履歴（同日データへの反復チューニング）</p>
+      <div class="table-scroll">
+        <table id="review-table">
+          <thead>
+            <tr>
+              <th>時刻</th>
+              <th>対象日</th>
+              <th>損益</th>
+              <th>勝率</th>
+              <th>取引数</th>
+              <th>前回比</th>
+            </tr>
+          </thead>
+          <tbody id="review-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="foot-note">
+      <div id="generated-at"></div>
+      <ul id="disclaimers"></ul>
+    </div>
+  </div>
+</div>
+
+<script>
+const PASS_HASH = "540ad7cf3f435a989cff45459a707c77b280e6517d90ec0f43cdc040580d8af6";
+
+async function sha256Hex(text) {
+  const enc = new TextEncoder().encode(text);
+  const buf = await crypto.subtle.digest("SHA-256", enc);
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, "0")).join("");
+}
+
+function escapeHtml(s) {
+  return String(s ?? "").replace(/[&<>"']/g, c => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[c]));
+}
+
+function yen(n) {
+  if (n === null || n === undefined) return "—";
+  const sign = n > 0 ? "+" : "";
+  return sign + Math.round(n).toLocaleString("ja-JP") + "円";
+}
+
+function pct(fraction, digits = 1) {
+  if (fraction === null || fraction === undefined) return "—";
+  return (fraction * 100).toFixed(digits) + "%";
+}
+
+function pnlClass(n) {
+  if (n === null || n === undefined || n === 0) return "neutral-text";
+  return n > 0 ? "gain-text" : "loss-text";
+}
+
+function fmtDateTime(iso) {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  if (isNaN(d)) return iso;
+  return d.toLocaleString("ja-JP", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
+}
+
+function fmtTime(iso) {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  if (isNaN(d)) return iso;
+  return d.toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" });
+}
+
+// ---------- ロック ----------
+const lockEl = document.getElementById("lock");
+const appEl = document.getElementById("app");
+const lockInput = document.getElementById("lock-input");
+const lockError = document.getElementById("lock-error");
+
+async function tryUnlock(pw) {
+  const h = await sha256Hex(pw);
+  if (h === PASS_HASH) {
+    localStorage.setItem("dt-auth", h);
+    lockEl.classList.add("hidden");
+    appEl.classList.remove("hidden");
+    loadData();
+    return true;
+  }
+  return false;
+}
+
+document.getElementById("lock-submit").addEventListener("click", async () => {
+  const ok = await tryUnlock(lockInput.value);
+  lockError.textContent = ok ? "" : "合言葉が違います";
+});
+lockInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") document.getElementById("lock-submit").click();
+});
+
+(async () => {
+  const saved = localStorage.getItem("dt-auth");
+  if (saved === PASS_HASH) {
+    lockEl.classList.add("hidden");
+    appEl.classList.remove("hidden");
+    loadData();
+  }
+})();
+
+// ---------- テーマ切替 ----------
+const root = document.documentElement;
+const savedTheme = localStorage.getItem("dt-theme");
+if (savedTheme) root.setAttribute("data-theme", savedTheme);
+document.getElementById("theme-toggle").addEventListener("click", () => {
+  const current = root.getAttribute("data-theme");
+  const next = current === "dark" ? "light" : current === "light" ? null : "dark";
+  if (next) { root.setAttribute("data-theme", next); localStorage.setItem("dt-theme", next); }
+  else { root.removeAttribute("data-theme"); localStorage.removeItem("dt-theme"); }
+});
+
+// ---------- データ描画 ----------
+async function loadData() {
+  let data;
+  try {
+    const res = await fetch("data.json", { cache: "no-store" });
+    data = await res.json();
+  } catch (e) {
+    document.getElementById("capital-hero").innerHTML = "<p>データの読み込みに失敗しました。</p>";
+    return;
+  }
+  render(data);
+}
+
+function render(data) {
+  // 資金ヒーロー
+  const acc = data.account || {};
+  const returnPct = acc.starting_capital ? ((acc.current_capital - acc.starting_capital) / acc.starting_capital) * 100 : null;
+  document.getElementById("capital-hero").innerHTML = `
+    <div>
+      <div class="eyebrow" style="margin-bottom:6px;">回転資金（シミュレーション）</div>
+      <div class="big num ${pnlClass(acc.current_capital - acc.starting_capital)}">${(acc.current_capital ?? 0).toLocaleString("ja-JP")}円</div>
+      <div class="cap-note">${escapeHtml(acc.note || "")}</div>
+    </div>
+    <div style="text-align:right;">
+      <div class="eyebrow" style="margin-bottom:6px;">開始資金比</div>
+      <div class="num ${pnlClass(returnPct)}" style="font-size:16px; font-weight:700;">${returnPct === null ? "—" : (returnPct > 0 ? "+" : "") + returnPct.toFixed(2) + "%"}</div>
+    </div>
+  `;
+
+  // stat cards
+  const lb = data.latest_backtest || {};
+  const watchlist = data.watchlist || [];
+  const activeCount = watchlist.filter(s => s.status === "active").length;
+  const simCount = watchlist.filter(s => s.status !== "active").length;
+  document.getElementById("stat-grid").innerHTML = `
+    <div class="stat-card">
+      <div class="label">直近バックテスト合計損益</div>
+      <div class="value num ${pnlClass(lb.grand_total_pnl)}">${yen(lb.grand_total_pnl)}</div>
+      <div class="sub">${fmtDateTime(lb.generated_at)} 実行分</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">同バックテスト取引数</div>
+      <div class="value num">${(lb.total_trades ?? "—").toLocaleString?.("ja-JP") ?? lb.total_trades ?? "—"}</div>
+      <div class="sub">件</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">監視銘柄（実戦記録中）</div>
+      <div class="value num">${activeCount}</div>
+      <div class="sub">銘柄</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">監視銘柄（シミュレーションのみ）</div>
+      <div class="value num">${simCount}</div>
+      <div class="sub">銘柄</div>
+    </div>
+  `;
+
+  // 要相談バナー
+  const reviewNeeded = data.review_needed || [];
+  if (reviewNeeded.length > 0) {
+    document.getElementById("review-needed-section").style.display = "";
+    document.getElementById("review-needed-list").innerHTML = reviewNeeded.map(r => `
+      <li><span class="rsym">${escapeHtml(r.symbol)} ${escapeHtml(r.name)}</span> — ${escapeHtml(r.reason)}</li>
+    `).join("");
+  }
+
+  // ウォッチリスト表
+  document.getElementById("watchlist-body").innerHTML = watchlist.map(s => `
+    <tr>
+      <td class="sym-cell">
+        <div class="name">${escapeHtml(s.name)}</div>
+        <div class="code">${escapeHtml(s.symbol)}${s.sector ? " ・ " + escapeHtml(s.sector) : ""}</div>
+      </td>
+      <td><span class="pill ${s.status === "active" ? "active" : "simulation"}">${s.status === "active" ? "実戦記録中" : "シミュレーション"}</span></td>
+      <td class="num">${s.cumulative_trade_count ?? 0}</td>
+      <td class="num">${pct(s.cumulative_win_rate)}</td>
+      <td class="num ${pnlClass(s.cumulative_pnl)}">${yen(s.cumulative_pnl)}</td>
+    </tr>
+  `).join("");
+
+  // 振り返り履歴
+  const history = data.review_history || [];
+  document.getElementById("review-body").innerHTML = history.slice().reverse().map(r => `
+    <tr>
+      <td>${fmtTime(r.reviewed_at)}</td>
+      <td>${r.review_date ? escapeHtml(r.review_date) : "—"}</td>
+      <td class="num ${pnlClass(r.grand_total_pnl)}">${yen(r.grand_total_pnl)}</td>
+      <td class="num">${r.overall_win_rate !== undefined && r.overall_win_rate !== null ? pct(r.overall_win_rate) : "—"}</td>
+      <td class="num">${r.total_trades ?? "—"}</td>
+      <td class="num ${pnlClass(r.pnl_delta_vs_prev)}">${r.pnl_delta_vs_prev !== undefined && r.pnl_delta_vs_prev !== null ? yen(r.pnl_delta_vs_prev) : "—"}</td>
+    </tr>
+  `).join("");
+
+  // フッター
+  document.getElementById("generated-at").textContent = "データ生成: " + fmtDateTime(data.generated_at);
+  document.getElementById("disclaimers").innerHTML = (data.disclaimers || []).map(d => `<li>${escapeHtml(d)}</li>`).join("");
+}
+
+// ---------- Service Worker ----------
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("service-worker.js").catch(() => {});
+  });
+}
+</script>
+</body>
+</html>

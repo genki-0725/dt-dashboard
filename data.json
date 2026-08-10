@@ -1,0 +1,609 @@
+{
+  "generated_at": "2026-08-10T14:43:27.921838+09:00",
+  "account": {
+    "starting_capital": 1000000,
+    "current_capital": 1039830,
+    "history": [
+      {
+        "date": "2026-08-09",
+        "starting_capital": 1000000,
+        "daily_pnl": 39830,
+        "ending_capital": 1039830,
+        "return_pct": 3.98
+      }
+    ],
+    "note": "シミュレーション上の回転資金（初期100万円）。実口座残高ではない。"
+  },
+  "latest_backtest": {
+    "grand_total_pnl": 126640,
+    "total_trades": 254,
+    "generated_at": "2026-08-10T13:12:15.142294+09:00"
+  },
+  "review_needed": [
+    {
+      "symbol": "6315",
+      "name": "TOWA",
+      "cumulative_win_rate": 0.3157894736842105,
+      "cumulative_trade_count": 19,
+      "cumulative_pnl": 6900,
+      "reason": "ランキング圏外だが累積損益+6,900円（損小利大タイプの可能性）のため自動削除せず、本人に相談"
+    },
+    {
+      "symbol": "5401",
+      "name": "日本製鉄",
+      "cumulative_win_rate": 0.45,
+      "cumulative_trade_count": 20,
+      "cumulative_pnl": 1660,
+      "reason": "ランキング圏外だが累積損益+1,660円（損小利大タイプの可能性）のため自動削除せず、本人に相談"
+    },
+    {
+      "symbol": "7832",
+      "name": "バンダイナムコホールディングス",
+      "cumulative_win_rate": 0.45454545454545453,
+      "cumulative_trade_count": 11,
+      "cumulative_pnl": 2600,
+      "reason": "ランキング圏外だが累積損益+2,600円（損小利大タイプの可能性）のため自動削除せず、本人に相談"
+    },
+    {
+      "symbol": "8267",
+      "name": "イオン",
+      "cumulative_win_rate": 0.5,
+      "cumulative_trade_count": 18,
+      "cumulative_pnl": 7500,
+      "reason": "ランキング圏外だが累積損益+7,500円（損小利大タイプの可能性）のため自動削除せず、本人に相談"
+    },
+    {
+      "symbol": "186A",
+      "name": "アストロスケールホールディングス",
+      "cumulative_win_rate": 0.4090909090909091,
+      "cumulative_trade_count": 22,
+      "cumulative_pnl": 4400,
+      "reason": "ランキング圏外だが累積損益+4,400円（損小利大タイプの可能性）のため自動削除せず、本人に相談"
+    },
+    {
+      "symbol": "6613",
+      "name": "QDレーザ",
+      "cumulative_win_rate": 0.4583333333333333,
+      "cumulative_trade_count": 24,
+      "cumulative_pnl": 14000,
+      "reason": "ランキング圏外だが累積損益+14,000円（損小利大タイプの可能性）のため自動削除せず、本人に相談"
+    },
+    {
+      "symbol": "278A",
+      "name": "Terra Drone",
+      "cumulative_win_rate": 1.0,
+      "cumulative_trade_count": 6,
+      "cumulative_pnl": 73000,
+      "reason": "ランキング圏外だが勝率100%・累積損益+73,000円（損小利大タイプの可能性）のため自動削除せず、本人に相談"
+    }
+  ],
+  "watchlist": [
+    {
+      "symbol": "278A",
+      "name": "Terra Drone",
+      "sector": "その他",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 7,
+      "cumulative_win_count": 5,
+      "cumulative_pnl": 63000,
+      "cumulative_win_rate": 0.7142857142857143
+    },
+    {
+      "symbol": "7974",
+      "name": "任天堂",
+      "sector": "エンタメ・ゲーム",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 6,
+      "cumulative_win_count": 2,
+      "cumulative_pnl": 17700,
+      "cumulative_win_rate": 0.3333333333333333
+    },
+    {
+      "symbol": "4004",
+      "name": "レゾナックホールディングス",
+      "sector": "化学・素材",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 1,
+      "cumulative_win_count": 1,
+      "cumulative_pnl": 17000,
+      "cumulative_win_rate": 1.0
+    },
+    {
+      "symbol": "6976",
+      "name": "太陽誘電",
+      "sector": "半導体・電子部品",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 3,
+      "cumulative_win_count": 2,
+      "cumulative_pnl": 12100,
+      "cumulative_win_rate": 0.6666666666666666
+    },
+    {
+      "symbol": "7832",
+      "name": "バンダイナムコホールディングス",
+      "sector": "エンタメ・ゲーム",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 13,
+      "cumulative_win_count": 4,
+      "cumulative_pnl": 6900,
+      "cumulative_win_rate": 0.3076923076923077
+    },
+    {
+      "symbol": "6981",
+      "name": "村田製作所",
+      "sector": "半導体・電子部品",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 3,
+      "cumulative_win_count": 1,
+      "cumulative_pnl": 5800,
+      "cumulative_win_rate": 0.3333333333333333
+    },
+    {
+      "symbol": "6525",
+      "name": "KOKUSAI ELECTRIC",
+      "sector": "半導体・電子部品",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 1,
+      "cumulative_win_count": 1,
+      "cumulative_pnl": 5200,
+      "cumulative_win_rate": 1.0
+    },
+    {
+      "symbol": "3563",
+      "name": "ＦＯＯＤ　＆　ＬＩＦＥ　ＣＯＭＰＡＮＩＥＳ",
+      "sector": "新規（要分類）",
+      "status": "simulation",
+      "added_date": "2026-08-09",
+      "added_reason": "デイトレ適性ランキング上位・変動率6.72%",
+      "cumulative_trade_count": 10,
+      "cumulative_win_count": 4,
+      "cumulative_pnl": 5200,
+      "cumulative_win_rate": 0.4
+    },
+    {
+      "symbol": "5108",
+      "name": "ブリヂストン",
+      "sector": "新規（要分類）",
+      "status": "simulation",
+      "added_date": "2026-08-09",
+      "added_reason": "デイトレ適性ランキング上位・変動率5.5%",
+      "cumulative_trade_count": 8,
+      "cumulative_win_count": 7,
+      "cumulative_pnl": 4900,
+      "cumulative_win_rate": 0.875
+    },
+    {
+      "symbol": "6613",
+      "name": "QDレーザ",
+      "sector": "新興・グロース",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 24,
+      "cumulative_win_count": 10,
+      "cumulative_pnl": 3400,
+      "cumulative_win_rate": 0.4166666666666667
+    },
+    {
+      "symbol": "186A",
+      "name": "アストロスケールホールディングス",
+      "sector": "新興・グロース",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 24,
+      "cumulative_win_count": 9,
+      "cumulative_pnl": 3100,
+      "cumulative_win_rate": 0.375
+    },
+    {
+      "symbol": "8267",
+      "name": "イオン",
+      "sector": "小売・内需",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 23,
+      "cumulative_win_count": 11,
+      "cumulative_pnl": 1950,
+      "cumulative_win_rate": 0.4782608695652174
+    },
+    {
+      "symbol": "9984",
+      "name": "ソフトバンクグループ",
+      "sector": "通信",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 9,
+      "cumulative_win_count": 5,
+      "cumulative_pnl": 1400,
+      "cumulative_win_rate": 0.5555555555555556
+    },
+    {
+      "symbol": "5401",
+      "name": "日本製鉄",
+      "sector": "資源・非鉄金属",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 19,
+      "cumulative_win_count": 8,
+      "cumulative_pnl": 730,
+      "cumulative_win_rate": 0.42105263157894735
+    },
+    {
+      "symbol": "2413",
+      "name": "エムスリー",
+      "sector": "医薬品・ヘルスケア",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 13,
+      "cumulative_win_count": 5,
+      "cumulative_pnl": 500,
+      "cumulative_win_rate": 0.38461538461538464
+    },
+    {
+      "symbol": "5016",
+      "name": "JX金属",
+      "sector": "資源・非鉄金属",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 11,
+      "cumulative_win_count": 5,
+      "cumulative_pnl": 100,
+      "cumulative_win_rate": 0.45454545454545453
+    },
+    {
+      "symbol": "285A",
+      "name": "キオクシアホールディングス",
+      "sector": "半導体・電子部品",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 0,
+      "cumulative_win_count": 0,
+      "cumulative_pnl": 0,
+      "cumulative_win_rate": 0
+    },
+    {
+      "symbol": "6920",
+      "name": "レーザーテック",
+      "sector": "半導体・電子部品",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 0,
+      "cumulative_win_count": 0,
+      "cumulative_pnl": 0,
+      "cumulative_win_rate": 0
+    },
+    {
+      "symbol": "4062",
+      "name": "イビデン",
+      "sector": "半導体・電子部品",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 0,
+      "cumulative_win_count": 0,
+      "cumulative_pnl": 0,
+      "cumulative_win_rate": 0
+    },
+    {
+      "symbol": "6857",
+      "name": "アドバンテスト",
+      "sector": "半導体・電子部品",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 0,
+      "cumulative_win_count": 0,
+      "cumulative_pnl": 0,
+      "cumulative_win_rate": 0
+    },
+    {
+      "symbol": "8035",
+      "name": "東京エレクトロン",
+      "sector": "半導体・電子部品",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 0,
+      "cumulative_win_count": 0,
+      "cumulative_pnl": 0,
+      "cumulative_win_rate": 0
+    },
+    {
+      "symbol": "6146",
+      "name": "ディスコ",
+      "sector": "半導体・電子部品",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 0,
+      "cumulative_win_count": 0,
+      "cumulative_pnl": 0,
+      "cumulative_win_rate": 0
+    },
+    {
+      "symbol": "5706",
+      "name": "三井金属",
+      "sector": "資源・非鉄金属",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 0,
+      "cumulative_win_count": 0,
+      "cumulative_pnl": 0,
+      "cumulative_win_rate": 0
+    },
+    {
+      "symbol": "6273",
+      "name": "ＳＭＣ",
+      "sector": "新規（要分類）",
+      "status": "simulation",
+      "added_date": "2026-08-09",
+      "added_reason": "デイトレ適性ランキング上位・変動率14.04%",
+      "cumulative_trade_count": 0,
+      "cumulative_win_count": 0,
+      "cumulative_pnl": 0,
+      "cumulative_win_rate": 0
+    },
+    {
+      "symbol": "7012",
+      "name": "川崎重工業",
+      "sector": "新規（要分類）",
+      "status": "simulation",
+      "added_date": "2026-08-09",
+      "added_reason": "デイトレ適性ランキング上位・変動率4.93%",
+      "cumulative_trade_count": 7,
+      "cumulative_win_count": 3,
+      "cumulative_pnl": -50,
+      "cumulative_win_rate": 0.42857142857142855
+    },
+    {
+      "symbol": "7735",
+      "name": "SCREENホールディングス",
+      "sector": "半導体・電子部品",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 3,
+      "cumulative_win_count": 2,
+      "cumulative_pnl": -500,
+      "cumulative_win_rate": 0.6666666666666666
+    },
+    {
+      "symbol": "4401",
+      "name": "ＡＤＥＫＡ",
+      "sector": "新規（要分類）",
+      "status": "simulation",
+      "added_date": "2026-08-09",
+      "added_reason": "デイトレ適性ランキング上位・変動率15.61%",
+      "cumulative_trade_count": 12,
+      "cumulative_win_count": 3,
+      "cumulative_pnl": -900,
+      "cumulative_win_rate": 0.25
+    },
+    {
+      "symbol": "5802",
+      "name": "住友電気工業",
+      "sector": "新規（要分類）",
+      "status": "simulation",
+      "added_date": "2026-08-09",
+      "added_reason": "デイトレ適性ランキング上位・変動率3.95%",
+      "cumulative_trade_count": 15,
+      "cumulative_win_count": 5,
+      "cumulative_pnl": -1150,
+      "cumulative_win_rate": 0.3333333333333333
+    },
+    {
+      "symbol": "5805",
+      "name": "ＳＷＣＣ",
+      "sector": "新規（要分類）",
+      "status": "simulation",
+      "added_date": "2026-08-09",
+      "added_reason": "デイトレ適性ランキング上位・変動率13.32%",
+      "cumulative_trade_count": 4,
+      "cumulative_win_count": 1,
+      "cumulative_pnl": -4000,
+      "cumulative_win_rate": 0.25
+    },
+    {
+      "symbol": "6723",
+      "name": "ルネサスエレクトロニクス",
+      "sector": "半導体・電子部品",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 8,
+      "cumulative_win_count": 1,
+      "cumulative_pnl": -5900,
+      "cumulative_win_rate": 0.125
+    },
+    {
+      "symbol": "8136",
+      "name": "サンリオ",
+      "sector": "エンタメ・ゲーム",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 29,
+      "cumulative_win_count": 6,
+      "cumulative_pnl": -7650,
+      "cumulative_win_rate": 0.20689655172413793
+    },
+    {
+      "symbol": "6315",
+      "name": "TOWA",
+      "sector": "半導体・電子部品",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 17,
+      "cumulative_win_count": 3,
+      "cumulative_pnl": -9600,
+      "cumulative_win_rate": 0.17647058823529413
+    },
+    {
+      "symbol": "3436",
+      "name": "SUMCO",
+      "sector": "半導体・電子部品",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 7,
+      "cumulative_win_count": 3,
+      "cumulative_pnl": -13900,
+      "cumulative_win_rate": 0.42857142857142855
+    },
+    {
+      "symbol": "5803",
+      "name": "フジクラ",
+      "sector": "その他",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 7,
+      "cumulative_win_count": 4,
+      "cumulative_pnl": -14200,
+      "cumulative_win_rate": 0.5714285714285714
+    },
+    {
+      "symbol": "5801",
+      "name": "古河電気工業",
+      "sector": "新規（要分類）",
+      "status": "simulation",
+      "added_date": "2026-08-09",
+      "added_reason": "デイトレ適性ランキング上位・変動率7.7%",
+      "cumulative_trade_count": 6,
+      "cumulative_win_count": 0,
+      "cumulative_pnl": -21800,
+      "cumulative_win_rate": 0.0
+    },
+    {
+      "symbol": "5713",
+      "name": "住友金属鉱山",
+      "sector": "資源・非鉄金属",
+      "status": "active",
+      "added_date": "2026-08-03",
+      "added_reason": null,
+      "cumulative_trade_count": 7,
+      "cumulative_win_count": 3,
+      "cumulative_pnl": -29500,
+      "cumulative_win_rate": 0.42857142857142855
+    }
+  ],
+  "review_history": [
+    {
+      "reviewed_at": "2026-08-09T21:07:54.822198",
+      "review_date": null,
+      "grand_total_pnl": -36690,
+      "total_trades": 1036,
+      "overall_win_rate": null,
+      "pnl_delta_vs_prev": null
+    },
+    {
+      "reviewed_at": "2026-08-09T21:46:30.569330",
+      "review_date": null,
+      "grand_total_pnl": 8620,
+      "total_trades": 303,
+      "overall_win_rate": null,
+      "pnl_delta_vs_prev": null
+    },
+    {
+      "reviewed_at": "2026-08-09T21:52:14.981396",
+      "review_date": null,
+      "grand_total_pnl": 13640,
+      "total_trades": 304,
+      "overall_win_rate": null,
+      "pnl_delta_vs_prev": null
+    },
+    {
+      "reviewed_at": "2026-08-09T22:07:16.329740",
+      "review_date": null,
+      "grand_total_pnl": 1430,
+      "total_trades": 314,
+      "overall_win_rate": null,
+      "pnl_delta_vs_prev": null
+    },
+    {
+      "reviewed_at": "2026-08-09T22:10:42.610300",
+      "review_date": null,
+      "grand_total_pnl": 4880,
+      "total_trades": 224,
+      "overall_win_rate": null,
+      "pnl_delta_vs_prev": null
+    },
+    {
+      "reviewed_at": "2026-08-09T22:18:20.448724",
+      "review_date": null,
+      "grand_total_pnl": 90910,
+      "total_trades": 364,
+      "overall_win_rate": null,
+      "pnl_delta_vs_prev": null
+    },
+    {
+      "reviewed_at": "2026-08-09T22:34:22.997211",
+      "review_date": null,
+      "grand_total_pnl": 90910,
+      "total_trades": 364,
+      "overall_win_rate": null,
+      "pnl_delta_vs_prev": null
+    },
+    {
+      "reviewed_at": "2026-08-09T22:43:21.626088",
+      "review_date": null,
+      "grand_total_pnl": 39430,
+      "total_trades": 279,
+      "overall_win_rate": null,
+      "pnl_delta_vs_prev": null
+    },
+    {
+      "reviewed_at": "2026-08-09T22:52:15.786185",
+      "review_date": "2026-08-07",
+      "grand_total_pnl": 39430,
+      "total_trades": 279,
+      "overall_win_rate": 0.4014,
+      "pnl_delta_vs_prev": 0
+    },
+    {
+      "reviewed_at": "2026-08-09T23:30:35.136394",
+      "review_date": "2026-08-07",
+      "grand_total_pnl": 18880,
+      "total_trades": 289,
+      "overall_win_rate": 0.3945,
+      "pnl_delta_vs_prev": -20550
+    },
+    {
+      "reviewed_at": "2026-08-09T23:42:08.200412",
+      "review_date": "2026-08-07",
+      "grand_total_pnl": 39830,
+      "total_trades": 297,
+      "overall_win_rate": 0.3838,
+      "pnl_delta_vs_prev": 20950
+    }
+  ],
+  "disclaimers": [
+    "このダッシュボードが表示する損益・勝率はすべてバックテスト（過去データでのシミュレーション）結果であり、実際の発注コードはこのプロジェクトに存在しません。実弾取引の実績ではありません。",
+    "データ蓄積はまだ数日分のみです。振り返り履歴の各エントリーは同じ日のデータに対する反復チューニングであり、複数日をまたいだアウトオブサンプル検証はまだ行えていません。",
+    "目標利益率（日利170%）は実装が目指す上限目標として扱っており、これに自動的に近づけようとする実装にはしていません。"
+  ]
+}
