@@ -6,7 +6,7 @@
 
 ## 表示内容（2026-08-18時点）
 
-- **キオクシア(285A)本番損益**（最上部）：`data/kioxia/daily_summary_log.jsonl`のうち
+- **キオクシア(285A)本番損益**（最上部）：`data/individual_strategies/kioxia/daily_summary_log.jsonl`のうち
   `dry_run: false`（実際に`--live`で発注した日）のみを集計した、正真正銘の実弾実績。
   dry-run実行日は「実績まだなし」として除外される（安全側、dry-runの参考値を実績と
   混同しないよう明確に区別）。
@@ -16,7 +16,7 @@
 
 ## 仕組み
 
-- `src/generate_webapp_data.py` が `data/*.json` / `*.jsonl` と `data/kioxia/*.json(l)` を
+- `src/generate_webapp_data.py` が `data/*.json` / `*.jsonl` と `data/individual_strategies/kioxia/*.json(l)` を
   読み込み、このフォルダの `data.json` に集約して書き出す（表示に必要な情報だけを抜粋。
   板・歩み値などの生データは含めない）。
 - `index.html` が `data.json` を読み込んで描画する、素のHTML/CSS/JS（フレームワーク不使用）。
