@@ -198,6 +198,26 @@ tbody tr:last-child td { border-bottom: none; }
 }
 .card-hero .big { font-size: 28px; font-weight: 700; }
 .card-hero .cap-note { font-size: 11px; color: var(--ink-muted); }
+
+/* キオクシア本番セクション */
+.kioxia-hero {
+  border: 1px solid var(--accent); background: color-mix(in srgb, var(--accent) 6%, var(--surface));
+}
+.kioxia-hero .eyebrow { color: var(--accent); }
+.pill.live { background: color-mix(in srgb, var(--gain) 16%, transparent); color: var(--gain); }
+.pill.not-started { background: var(--surface-2); color: var(--ink-muted); border: 1px solid var(--border); }
+.kioxia-substats {
+  display: flex; gap: 18px; flex-wrap: wrap; margin-top: 4px;
+}
+.kioxia-substats .item { font-size: 12.5px; color: var(--ink-muted); }
+.kioxia-substats .item b { color: var(--ink); font-family: var(--font-num); font-weight: 700; }
+.empty-note {
+  font-size: 13px; color: var(--ink-muted); padding: 14px 2px;
+}
+.frozen-banner {
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 10px 14px; font-size: 12px; color: var(--ink-muted); margin-bottom: 16px;
+}
 </style>
 </head>
 <body>
@@ -219,6 +239,28 @@ tbody tr:last-child td { border-bottom: none; }
       <button class="theme-toggle" id="theme-toggle">🌓 表示切替</button>
     </header>
 
+    <section>
+      <p class="eyebrow">キオクシア(285A) 本番損益</p>
+      <div class="card-hero kioxia-hero" id="kioxia-hero"></div>
+      <div class="table-scroll" id="kioxia-history-wrap" style="display:none;">
+        <table id="kioxia-history-table">
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>損益</th>
+              <th>取引数</th>
+              <th>勝率</th>
+              <th>CB</th>
+              <th>SOX停止</th>
+            </tr>
+          </thead>
+          <tbody id="kioxia-history-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="frozen-banner" id="legacy-frozen-banner" style="display:none;"></div>
+
     <div class="card-hero" id="capital-hero"></div>
 
     <section>
@@ -233,7 +275,7 @@ tbody tr:last-child td { border-bottom: none; }
     </section>
 
     <section>
-      <p class="eyebrow">ウォッチリスト（累積損益順）</p>
+      <p class="eyebrow">ウォッチリスト（累積損益順・旧45銘柄シミュレーション）</p>
       <div class="table-scroll">
         <table id="watchlist-table">
           <thead>
@@ -251,7 +293,7 @@ tbody tr:last-child td { border-bottom: none; }
     </section>
 
     <section>
-      <p class="eyebrow">振り返り履歴（同日データへの反復チューニング）</p>
+      <p class="eyebrow">振り返り履歴（同日データへの反復チューニング・旧45銘柄シミュレーション）</p>
       <div class="table-scroll">
         <table id="review-table">
           <thead>
@@ -381,6 +423,57 @@ async function loadData() {
 }
 
 function render(data) {
+  // キオクシア(285A)本番損益
+  const kx = data.kioxia_live || {};
+  const kxStarted = kx.status === "trading";
+  const kxHero = document.getElementById("kioxia-hero");
+  if (!kxStarted) {
+    kxHero.innerHTML = `
+      <div>
+        <div class="eyebrow" style="margin-bottom:6px;">状態</div>
+        <span class="pill not-started">実績まだなし</span>
+        <div class="empty-note" style="padding-left:0;">買付余力の確保・検証がまだ完了していません。実弾発注が始まり次第、ここに実現損益が表示されます。</div>
+      </div>
+    `;
+  } else {
+    kxHero.innerHTML = `
+      <div>
+        <div class="eyebrow" style="margin-bottom:6px;">累積実現損益（本番実弾のみ）</div>
+        <div class="big num ${pnlClass(kx.cumulative_pnl)}">${yen(kx.cumulative_pnl)}</div>
+        <div class="kioxia-substats">
+          <span class="item">取引数 <b>${kx.cumulative_trades ?? 0}</b>件</span>
+          <span class="item">勝率 <b>${kx.cumulative_win_rate !== null && kx.cumulative_win_rate !== undefined ? kx.cumulative_win_rate + "%" : "—"}</b></span>
+          <span class="item">稼働日数 <b>${kx.days_traded ?? 0}</b>日</span>
+          <span class="item">CB発動 <b>${kx.cb_triggered_days ?? 0}</b>日</span>
+        </div>
+      </div>
+      <div style="text-align:right;">
+        <span class="pill live">本番稼働中</span>
+      </div>
+    `;
+    const history = kx.history || [];
+    if (history.length > 0) {
+      document.getElementById("kioxia-history-wrap").style.display = "";
+      document.getElementById("kioxia-history-body").innerHTML = history.map(r => `
+        <tr>
+          <td>${escapeHtml(r.date)}</td>
+          <td class="num ${pnlClass(r.realized_pnl)}">${yen(r.realized_pnl)}</td>
+          <td class="num">${r.trades ?? 0}</td>
+          <td class="num">${r.win_rate !== null && r.win_rate !== undefined ? r.win_rate + "%" : "—"}</td>
+          <td class="num">${r.cb_triggered ? "発動" : "-"}</td>
+          <td class="num">${r.sox_filter_active === true ? "停止中" : r.sox_filter_active === false ? "-" : "—"}</td>
+        </tr>
+      `).join("");
+    }
+  }
+
+  // 旧45銘柄シミュレーション（凍結中バナー）
+  if (data.legacy_simulation_frozen) {
+    const banner = document.getElementById("legacy-frozen-banner");
+    banner.style.display = "";
+    banner.textContent = "⏸ " + (data.legacy_simulation_frozen_note || "この項目は更新停止中です。");
+  }
+
   // 資金ヒーロー
   const acc = data.account || {};
   const returnPct = acc.starting_capital ? ((acc.current_capital - acc.starting_capital) / acc.starting_capital) * 100 : null;
