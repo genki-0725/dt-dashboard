@@ -1,16 +1,92 @@
 {
-  "generated_at": "2026-08-18T14:51:54.500245+09:00",
+  "generated_at": "2026-08-18T15:30:04.070003+09:00",
   "kioxia_live": {
     "symbol_label": "285A（キオクシアHD）",
-    "status": "not_started",
-    "cumulative_pnl": null,
-    "cumulative_trades": 0,
-    "cumulative_win_rate": null,
-    "days_traded": 0,
+    "status": "trading",
+    "cumulative_pnl": 503100,
+    "cumulative_trades": 31,
+    "cumulative_win_rate": 54.8,
+    "days_traded": 1,
     "cb_triggered_days": 0,
-    "history": [],
-    "by_hour_key": {},
-    "by_exit_reason": {},
+    "history": [
+      {
+        "date": "2026-08-18",
+        "realized_pnl": 503100,
+        "trades": 31,
+        "win_rate": 54.8,
+        "cb_triggered": false,
+        "sox_filter_active": false
+      }
+    ],
+    "by_hour_key": {
+      "09:00-10:00": {
+        "trades": 6,
+        "pnl": 169000,
+        "win_rate": 66.7
+      },
+      "10:00-11:00": {
+        "trades": 2,
+        "pnl": 75000,
+        "win_rate": 50.0
+      },
+      "11:00-12:00": {
+        "trades": 2,
+        "pnl": 142000,
+        "win_rate": 50.0
+      },
+      "12:00-13:00": {
+        "trades": 10,
+        "pnl": -61000,
+        "win_rate": 50.0
+      },
+      "13:00-14:00": {
+        "trades": 2,
+        "pnl": 105000,
+        "win_rate": 100.0
+      },
+      "14:00-15:00": {
+        "trades": 3,
+        "pnl": 85100,
+        "win_rate": 33.3
+      },
+      "15:00-15:30": {
+        "trades": 6,
+        "pnl": -12000,
+        "win_rate": 50.0
+      }
+    },
+    "by_exit_reason": {
+      "exit_threshold": {
+        "trades": 21,
+        "pnl": -29000,
+        "win_rate": 52.4
+      },
+      "hour_boundary": {
+        "trades": 5,
+        "pnl": 186000,
+        "win_rate": 60.0
+      },
+      "manual_close_by_user": {
+        "trades": 1,
+        "pnl": 111100,
+        "win_rate": 100.0
+      },
+      "manual_reserved_order_goba_open": {
+        "trades": 1,
+        "pnl": 207000,
+        "win_rate": 100.0
+      },
+      "manual_supervised_test": {
+        "trades": 1,
+        "pnl": 156000,
+        "win_rate": 100.0
+      },
+      "stop_loss": {
+        "trades": 2,
+        "pnl": -128000,
+        "win_rate": 0.0
+      }
+    },
     "note": "「実弾」の集計はkioxia_live_engine.pyが--liveで起動し実際に発注した日のみが対象です。既定のdry-run（発注内容をログに残すだけで送信しない安全モード）で稼働した日は含みません。"
   },
   "account": {
