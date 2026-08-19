@@ -1,14 +1,22 @@
 {
-  "generated_at": "2026-08-19T12:09:36.316587+09:00",
+  "generated_at": "2026-08-19T15:30:20.618989+09:00",
   "kioxia_live": {
     "symbol_label": "285A（キオクシアHD）",
     "status": "trading",
-    "cumulative_pnl": 497100,
-    "cumulative_trades": 32,
-    "cumulative_win_rate": 53.1,
-    "days_traded": 1,
+    "cumulative_pnl": 430200,
+    "cumulative_trades": 53,
+    "cumulative_win_rate": 45.3,
+    "days_traded": 2,
     "cb_triggered_days": 0,
     "history": [
+      {
+        "date": "2026-08-19",
+        "realized_pnl": -66900,
+        "trades": 21,
+        "win_rate": 33.3,
+        "cb_triggered": false,
+        "sox_filter_active": true
+      },
       {
         "date": "2026-08-18",
         "realized_pnl": 497100,
@@ -35,36 +43,46 @@
         "win_rate": 50.0
       },
       "12:00-13:00": {
-        "trades": 10,
-        "pnl": -61000,
+        "trades": 20,
+        "pnl": -39000,
         "win_rate": 50.0
       },
       "13:00-14:00": {
-        "trades": 2,
-        "pnl": 105000,
-        "win_rate": 100.0
+        "trades": 4,
+        "pnl": 82000,
+        "win_rate": 75.0
       },
       "14:00-15:00": {
-        "trades": 3,
-        "pnl": 85100,
-        "win_rate": 33.3
+        "trades": 5,
+        "pnl": 100200,
+        "win_rate": 40.0
       },
       "15:00-15:30": {
-        "trades": 7,
-        "pnl": -18000,
-        "win_rate": 42.9
+        "trades": 14,
+        "pnl": -99000,
+        "win_rate": 21.4
       }
     },
     "by_exit_reason": {
       "exit_threshold": {
-        "trades": 21,
-        "pnl": -29000,
-        "win_rate": 52.4
+        "trades": 37,
+        "pnl": -126000,
+        "win_rate": 43.2
+      },
+      "externally_closed_detected": {
+        "trades": 1,
+        "pnl": 49100,
+        "win_rate": 100.0
       },
       "hour_boundary": {
-        "trades": 5,
-        "pnl": 186000,
-        "win_rate": 60.0
+        "trades": 8,
+        "pnl": 171000,
+        "win_rate": 50.0
+      },
+      "hour_boundary_goba": {
+        "trades": 1,
+        "pnl": -4000,
+        "win_rate": 0.0
       },
       "manual_close_by_user": {
         "trades": 1,
