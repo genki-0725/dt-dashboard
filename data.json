@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-08-20T16:05:23.459426+09:00",
+  "generated_at": "2026-08-20T16:07:16.500792+09:00",
   "kioxia_live": {
     "symbol_label": "285A（キオクシアHD）",
     "status": "trading",
-    "cumulative_pnl": 294957,
+    "cumulative_pnl": 280417,
     "cumulative_trades": 88,
     "cumulative_win_rate": 52.3,
     "days_traded": 3,
@@ -19,7 +19,7 @@
       },
       {
         "date": "2026-08-19",
-        "realized_pnl": -66900,
+        "realized_pnl": -72152,
         "trades": 21,
         "win_rate": 33.3,
         "cb_triggered": false,
@@ -27,7 +27,7 @@
       },
       {
         "date": "2026-08-18",
-        "realized_pnl": 497100,
+        "realized_pnl": 487812,
         "trades": 32,
         "win_rate": 53.1,
         "cb_triggered": false,
@@ -37,59 +37,59 @@
     "by_hour_key": {
       "09:00-10:00": {
         "trades": 13,
-        "pnl": 174220,
+        "pnl": 172409,
         "win_rate": 69.2
       },
       "10:00-11:00": {
         "trades": 6,
-        "pnl": -59025,
+        "pnl": -59626,
         "win_rate": 33.3
       },
       "11:00-12:00": {
         "trades": 3,
-        "pnl": 134742,
+        "pnl": 134156,
         "win_rate": 33.3
       },
       "12:00-13:00": {
         "trades": 30,
-        "pnl": 30415,
+        "pnl": 25005,
         "win_rate": 60.0
       },
       "13:00-14:00": {
         "trades": 7,
-        "pnl": 78014,
+        "pnl": 76930,
         "win_rate": 71.4
       },
       "14:00-15:00": {
         "trades": 8,
-        "pnl": 39417,
+        "pnl": 38066,
         "win_rate": 50.0
       },
       "15:00-15:30": {
         "trades": 21,
-        "pnl": -102826,
+        "pnl": -106523,
         "win_rate": 33.3
       }
     },
     "by_exit_reason": {
       "exit_threshold": {
         "trades": 57,
-        "pnl": 45831,
+        "pnl": 35754,
         "win_rate": 54.4
       },
       "externally_closed_detected": {
         "trades": 3,
-        "pnl": 84380,
+        "pnl": 84131,
         "win_rate": 100.0
       },
       "hour_boundary": {
         "trades": 13,
-        "pnl": 205703,
+        "pnl": 203490,
         "win_rate": 61.5
       },
       "hour_boundary_goba": {
         "trades": 2,
-        "pnl": -2261,
+        "pnl": -2507,
         "win_rate": 50.0
       },
       "hour_boundary_zenba": {
@@ -99,27 +99,27 @@
       },
       "manual_close_by_user": {
         "trades": 1,
-        "pnl": 111100,
+        "pnl": 110811,
         "win_rate": 100.0
       },
       "manual_reserved_order_goba_open": {
         "trades": 1,
-        "pnl": 207000,
+        "pnl": 206709,
         "win_rate": 100.0
       },
       "manual_supervised_test": {
         "trades": 1,
-        "pnl": 156000,
+        "pnl": 155700,
         "win_rate": 100.0
       },
       "market_close_delayed_confirmation": {
         "trades": 1,
-        "pnl": -6000,
+        "pnl": -6281,
         "win_rate": 0.0
       },
       "stop_loss": {
         "trades": 8,
-        "pnl": -499538,
+        "pnl": -500132,
         "win_rate": 0.0
       }
     },
