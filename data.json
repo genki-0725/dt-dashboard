@@ -1,14 +1,22 @@
 {
-  "generated_at": "2026-08-21T11:44:12.641736+09:00",
+  "generated_at": "2026-08-21T15:35:50.130674+09:00",
   "kioxia_live": {
     "symbol_label": "285A（キオクシアHD）",
     "status": "trading",
-    "cumulative_pnl": 304000,
-    "cumulative_trades": 88,
-    "cumulative_win_rate": 52.3,
-    "days_traded": 3,
+    "cumulative_pnl": 221000,
+    "cumulative_trades": 117,
+    "cumulative_win_rate": 52.1,
+    "days_traded": 4,
     "cb_triggered_days": 0,
     "history": [
+      {
+        "date": "2026-08-21",
+        "realized_pnl": -83000,
+        "trades": 29,
+        "win_rate": 51.7,
+        "cb_triggered": false,
+        "sox_filter_active": false
+      },
       {
         "date": "2026-08-20",
         "realized_pnl": -126200,
@@ -36,46 +44,46 @@
     ],
     "by_hour_key": {
       "09:00-10:00": {
-        "trades": 13,
-        "pnl": 176000,
-        "win_rate": 69.2
+        "trades": 19,
+        "pnl": 285000,
+        "win_rate": 73.7
       },
       "10:00-11:00": {
-        "trades": 6,
-        "pnl": -58000,
-        "win_rate": 33.3
+        "trades": 8,
+        "pnl": -234000,
+        "win_rate": 25.0
       },
       "11:00-12:00": {
-        "trades": 3,
-        "pnl": 135000,
-        "win_rate": 33.3
+        "trades": 4,
+        "pnl": 93000,
+        "win_rate": 25.0
       },
       "12:00-13:00": {
-        "trades": 30,
-        "pnl": 33000,
+        "trades": 40,
+        "pnl": 39000,
         "win_rate": 60.0
       },
       "13:00-14:00": {
-        "trades": 7,
-        "pnl": 78800,
-        "win_rate": 71.4
+        "trades": 9,
+        "pnl": 104800,
+        "win_rate": 66.7
       },
       "14:00-15:00": {
-        "trades": 8,
-        "pnl": 40200,
-        "win_rate": 50.0
+        "trades": 9,
+        "pnl": 54200,
+        "win_rate": 55.6
       },
       "15:00-15:30": {
-        "trades": 21,
-        "pnl": -101000,
-        "win_rate": 33.3
+        "trades": 28,
+        "pnl": -121000,
+        "win_rate": 32.1
       }
     },
     "by_exit_reason": {
       "exit_threshold": {
-        "trades": 57,
-        "pnl": 51000,
-        "win_rate": 54.4
+        "trades": 78,
+        "pnl": 120000,
+        "win_rate": 53.8
       },
       "externally_closed_detected": {
         "trades": 3,
@@ -83,9 +91,9 @@
         "win_rate": 100.0
       },
       "hour_boundary": {
-        "trades": 13,
-        "pnl": 207000,
-        "win_rate": 61.5
+        "trades": 18,
+        "pnl": 265000,
+        "win_rate": 66.7
       },
       "hour_boundary_goba": {
         "trades": 2,
@@ -93,8 +101,8 @@
         "win_rate": 50.0
       },
       "hour_boundary_zenba": {
-        "trades": 1,
-        "pnl": -7000,
+        "trades": 2,
+        "pnl": -49000,
         "win_rate": 0.0
       },
       "manual_close_by_user": {
@@ -113,13 +121,13 @@
         "win_rate": 100.0
       },
       "market_close_delayed_confirmation": {
-        "trades": 1,
-        "pnl": -6000,
+        "trades": 2,
+        "pnl": -26000,
         "win_rate": 0.0
       },
       "stop_loss": {
-        "trades": 8,
-        "pnl": -498000,
+        "trades": 9,
+        "pnl": -646000,
         "win_rate": 0.0
       }
     },
@@ -161,9 +169,9 @@
     "note": "シミュレーション上の回転資金（初期100万円）。実口座残高ではない。"
   },
   "latest_backtest": {
-    "grand_total_pnl": 39860,
-    "total_trades": 439,
-    "generated_at": "2026-08-17T18:49:44.688432+09:00"
+    "grand_total_pnl": -17600,
+    "total_trades": 44,
+    "generated_at": "2026-08-21T11:53:25.156373+09:00"
   },
   "review_needed": [
     {
