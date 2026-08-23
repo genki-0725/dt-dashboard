@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T15:35:50.130674+09:00",
+  "generated_at": "2026-08-24T08:55:02.672638+09:00",
   "kioxia_live": {
     "symbol_label": "285A（キオクシアHD）",
     "status": "trading",
@@ -171,7 +171,7 @@
   "latest_backtest": {
     "grand_total_pnl": -17600,
     "total_trades": 44,
-    "generated_at": "2026-08-21T11:53:25.156373+09:00"
+    "generated_at": "2026-08-21T11:53:25.156000+09:00"
   },
   "review_needed": [
     {
