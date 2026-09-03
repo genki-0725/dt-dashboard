@@ -1,19 +1,19 @@
 {
-  "generated_at": "2026-09-02T15:25:22.009852+09:00",
+  "generated_at": "2026-09-03T15:25:15.411607+09:00",
   "kioxia_live": {
     "symbol_label": "285A（キオクシアHD）",
     "status": "trading",
-    "cumulative_pnl": 226500,
-    "cumulative_trades": 197,
-    "cumulative_win_rate": 46.2,
+    "cumulative_pnl": 190500,
+    "cumulative_trades": 198,
+    "cumulative_win_rate": 46.0,
     "days_traded": 7,
     "cb_triggered_days": 0,
     "history": [
       {
         "date": "2026-09-02",
-        "realized_pnl": -77000,
-        "trades": 21,
-        "win_rate": 28.6,
+        "realized_pnl": -113000,
+        "trades": 22,
+        "win_rate": 27.3,
         "cb_triggered": false,
         "sox_filter_active": false
       },
